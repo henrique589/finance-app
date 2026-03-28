@@ -13,12 +13,25 @@
     <link rel="stylesheet" href="{% static 'financas/css/style.css' %}">
 </head>
 
-<body>
+<body class="p-3 bg-dark text-white"> 
 
-    <h1>Controle Financeiro</h1>
+    {% block header %}
+    <div class="d-flex justify-content-end align-items-center position-relative py-2">
+        
+        <h1 class="m-0 position-absolute top-50 start-50 translate-middle">Controle Financeiro</h1>
+        
+        {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post" class="m-0">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger">
+                    <i class="fa-solid fa-right-from-bracket me-2"></i>Sair
+                </button>
+            </form>
+        {% endif %}
+    </div>
 
     <hr>
-
+    {% endblock %}
     {% block content %}
     {% endblock %}
 
