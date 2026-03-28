@@ -5,10 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Lancamento
 from .forms import LancamentoForm
 
-@login_required
-def home(request):
-    return render(request, 'financas/home.html')
-
 def registro(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -73,4 +69,4 @@ def deletar_lancamento(request, id):
 
     lancamento.delete()
 
-    return render("lista_lancamentos")
+    return redirect("lista_lancamentos")
