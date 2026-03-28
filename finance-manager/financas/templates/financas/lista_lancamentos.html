@@ -24,7 +24,7 @@
                     {% for l in lancamentos %}
                     <tr>
                         <td class="ps-4">{{ l.data|date:"d/m/Y" }}</td>
-                        <td class="fw-bold {% if l.tipo == 'Entrada' %}text-success{% else %}text-danger{% endif %}">
+                        <td class="fw-bold {% if l.tipo == 'R' %}text-success{% else %}text-danger{% endif %}">
                             R$ {{ l.valor }}
                         </td>
                         <td>{{ l.categoria }}</td>

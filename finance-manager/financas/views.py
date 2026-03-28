@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 
 from .models import Lancamento
-from .forms import LancamentoForm
+from .forms import LancamentoForm, RegistroForm
 
 def registro(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegistroForm(request.POST) 
         if form.is_valid():
             form.save()
             return redirect("login")
     else:
-        form = UserCreationForm()
+        form = RegistroForm() 
+        
     return render(request, "financas/registro.html", {"form": form})
 
 @login_required

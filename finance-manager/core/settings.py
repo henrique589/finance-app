@@ -73,6 +73,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
+SESSION_COOKIE_AGE = 2592000
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

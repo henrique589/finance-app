@@ -1,9 +1,96 @@
-<h2>Registrar</h2>
+{% extends 'base.html' %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Cadastrar</button>
-</form>
+{% block header %}
+{% endblock %}
 
-<a href="{% url 'login' %}">Já tenho conta</a>
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+    
+    <div class="card shadow-lg border-0 rounded-4" style="max-width: 480px; width: 100%; background-color: #1e1e24;">
+        <div class="card-body p-5 text-white text-center">
+            
+            <div class="bg-success rounded-circle d-inline-flex justify-content-center align-items-center mb-4" style="width: 70px; height: 70px;">
+                <i class="fa-solid fa-user-plus fs-2 text-white"></i>
+            </div>
+            
+            <h3 class="fw-bold mb-2">Criar Conta</h3>
+            <p class="text-secondary mb-4">Junte-se a nós e organize sua vida financeira.</p>
+
+            <form method="post" class="auth-form text-start">
+                {% csrf_token %}
+                
+                {{ form.as_p }}
+                
+                <button type="submit" class="btn btn-success btn-lg w-100 mt-4 rounded-pill fw-bold">
+                    <i class="fa-solid fa-check me-2"></i> Cadastrar
+                </button>
+            </form>
+            
+            <div class="mt-4">
+                <small class="text-secondary">Já tem uma conta? 
+                    <a href="{% url 'login' %}" class="text-success text-decoration-none fw-bold">Faça Login</a>
+                </small>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Espaçamento entre os campos */
+    .auth-form p {
+        margin-bottom: 1.2rem;
+    }
+    
+    /* Estiliza os textos (Usuário, Senha, etc) */
+    .auth-form label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: #adb5bd;
+    }
+    
+    /* Estiliza as caixas de texto */
+    .auth-form input {
+        width: 100%;
+        padding: 0.8rem 1.2rem;
+        border-radius: 0.5rem;
+        border: 1px solid #495057;
+        background-color: #2b2b36;
+        color: #ffffff;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    /* Efeito de foco no input (agora verde) */
+    .auth-form input:focus {
+        border-color: #198754; /* Verde do Bootstrap */
+        outline: none;
+        box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+    }
+
+    /* ESTILOS PARA OS TEXTOS DE AJUDA E REGRAS DE SENHA DO DJANGO */
+    
+    /* Textos logo abaixo dos inputs */
+    .auth-form .helptext {
+        font-size: 0.75rem;
+        color: #6c757d; /* Cinza escuro */
+        display: block;
+        margin-top: 0.4rem;
+    }
+    
+    /* A lista de regras de senha (os pontinhos) */
+    .auth-form ul {
+        padding-left: 1.2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+        font-size: 0.75rem;
+        color: #6c757d;
+    }
+    
+    .auth-form ul li {
+        margin-bottom: 0.2rem;
+    }
+</style>
+
+{% endblock %}
